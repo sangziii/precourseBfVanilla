@@ -10,3 +10,6 @@ Thumbs.db
 ## Directory-based project format
 .idea/
 /*.iml
+.gitignore
+project_Paper/
+project_Watch/
