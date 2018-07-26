@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<title>값 타입의 변환</title>
+</head>
+<body>
+<script>
+	/*
+		프로그래머스 > 알고리즘 연습 > level1 > 문자열 내 p와 y의 개수 (https://programmers.co.kr/learn/courses/30/lessons/12916?language=javascript)
+	*/
+	function solution(s){
+		if(s.length == 0){
+			throw new error("빈 문자열은 처리되지 않습니다.");
+		}
+
+		s = s.toLowerCase();
+		var countP = 0, countY = 0;
+
+		for(var i=0; i<s.length; i++){
+			if( s[i] === "p"){
+				countP++;
+			} else if(s[i] === "y"){
+				countY++;
+			}
+		}
+		return (countP === countY);
+	}
+	console.log(solution("pPoooyY"));
+	console.log(solution("Pyy"));
+	console.log(solution("abcdefgp"));
+	console.log(solution(""));
+	console.log(solution("pY"));
+
+</script>
+</body>
+</html>

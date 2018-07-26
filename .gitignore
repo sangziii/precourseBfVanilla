@@ -1,0 +1,12 @@
+# Created by .ignore support plugin (hsz.mobi)
+node_modules
+npm-debug.log
+doc
+//Gruntfile.js
+//package.json
+Thumbs.db
+.sass-cache
+.ftppass
+## Directory-based project format
+.idea/
+/*.iml
