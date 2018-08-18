@@ -1,0 +1,68 @@
+body {
+    background: linear-gradient(to right, #25c481, #25b7c4);
+}
+
+.content {
+    padding: 40px;
+}
+
+/* 탭 UI */
+.group_tabs {
+    padding: 4px;
+    border: 1px solid #999;
+    background-color: #fff;
+}
+
+.group_tabs .item {
+    float: left;
+    margin-left: 3px;
+    border: 1px solid #999;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+
+.group_tabs .item:first-child {
+    margin-left: 0;
+}
+
+.group_tabs .item.is_active {
+    border: 1px solid #003fff;
+}
+
+.group_tabs .item:hover {
+    border: 1px solid #003fff;
+}
+
+.group_tabs .item:hover .item_inner {
+    background-color: #007fff;
+    color: #fff;
+}
+
+.group_tabs .item.is_active .item_inner {
+    background-color: #007fff;
+    color: #fff;
+}
+
+.group_tabs .item_inner {
+    display: block;
+    padding: 15px;
+    background-color: #ddd;
+}
+
+.group_tabs .header_tabs:after {
+    display: table;
+    table-layout: fixed;
+    clear: both;
+    content: '';
+}
+
+.group_tabs .contents_pannel {
+    margin-top: -1px;
+    border-top: 1px solid #ddd;
+}
+
+.group_tabs .panel {
+    padding: 20px 15px;
+    font-size: 13px;
+    line-height: 18px;
+}
