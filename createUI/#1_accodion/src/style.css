@@ -2,12 +2,12 @@
     padding: 40px;
 }
 
-.area_accordion {
+.accordion {
     width: 460px;
     /* border: 1px solid #777; */
 }
 
-.area_accordion .title_section {
+.accordion .title_section {
     position: relative;
     margin-top: 3px;
     padding: 10px 0 10px 34px;
@@ -20,7 +20,7 @@
     cursor: pointer;
 }
 
-.area_accordion .title_section:before {
+.accordion .title_section:before {
     position: absolute;
     left: 20px;
     top: 50%;
@@ -31,7 +31,7 @@
     content: '';
 }
 
-.area_accordion .title_section.is_active {
+.accordion .title_section.is_active {
     border: 1px solid #003fff;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
@@ -39,19 +39,19 @@
     color: #fff;
 }
 
-.area_accordion .title_section.is_active + .panel {
+.accordion .title_section.is_active + .panel {
     display: block;
 }
 
-.area_accordion .title_section.is_active:before {
+.accordion .title_section.is_active:before {
     background-color: #fff;
 }
 
-.area_accordion .title_section:first-child {
+.accordion .title_section:first-child {
     margin-top: 0;
 }
 
-.area_accordion .panel {
+.accordion .panel {
     display: none;
     margin-top: -1px;
     padding: 20px;
