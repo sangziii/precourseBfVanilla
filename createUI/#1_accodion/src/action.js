@@ -1,6 +1,6 @@
 window.onload = function(){
     function accodianInit(accodianDiv){
-        var liElement = accodianDiv.querySelectorAll('.title_section');
+        var liElements = accodianDiv.querySelectorAll('.title_section');
 
         function showPanel(titleItem){
             (accodianDiv.querySelector('.is_active')) && accodianDiv.querySelector('.is_active').classList.remove('is_active');
@@ -11,10 +11,10 @@ window.onload = function(){
             showPanel(event.currentTarget);
         }        
         
-        for(var i=0,len=liElement.length; i<len; i++){
-            liElement[i].addEventListener('click', sendEvent);
+        for(var i=0,len=liElements.length; i<len; i++){
+            liElements[i].addEventListener('click', sendEvent);
         }
-
+        showPanel(liElements[0]);
     }
 
     accodianInit(document.querySelector('.accordion'));
