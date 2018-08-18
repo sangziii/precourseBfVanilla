@@ -9,5 +9,6 @@ Thumbs.db
 .ftppass
 ## Directory-based project format
 .idea/
+.vscode/
 /*.iml
 .gitignore
