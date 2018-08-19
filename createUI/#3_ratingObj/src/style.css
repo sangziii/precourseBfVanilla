@@ -1,0 +1,61 @@
+body {
+    background: linear-gradient(to right, #25c481, #25b7c4);
+}
+
+.content {
+    padding: 40px;
+}
+
+h2 {
+    margin: 40px 0 15px;
+}
+
+h2:first-child {
+    margin-top: 0;
+}
+
+/* 탭 UI */
+.list_rating {
+    padding: 4px;
+}
+
+.list_rating:after {
+    display: table;
+    table-layout: fixed;
+    clear: both;
+    content: '';
+}
+
+.list_rating .item {
+    float: left;
+    margin-left: 10px;
+    border-radius: 50%;
+    background-color: #ddd;
+    text-align: center;
+}
+
+.list_rating .item:first-child {
+    margin-left: 0;
+}
+
+.list_rating .item.is_active {
+    background-color: #007fff;
+}
+
+.list_rating .item.is_active .item_inner {
+    color: #fff;
+}
+
+.group_rating .item_inner {
+    display: block;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+}
+
+.group_rating .header_tabs:after {
+    display: table;
+    table-layout: fixed;
+    clear: both;
+    content: '';
+}
