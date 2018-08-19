@@ -31,17 +31,40 @@
 //         626331은 500번을 시도해도 1이 되지 못하므로 -1을 리턴해야합니다.
 */
 
-function solution(x, n) {
-    var arr = [];
-    const offset = x;
-    var i = offset;
-    var len = Math.abs(x * n);
+// 1차 풀이
+function solution(num) {
+    var count = 0;
 
-    for (i; Math.abs(i) <= len; i += x) {
-        arr.push(i);
+    while (num != 1) {
+        if (num % 2 == 0) {
+            num = num / 2
+            count++;
+        } else {
+            num = num * 3 + 1
+            count++;
+        }
+        if (count >= 500) return -1;
     }
-    return arr;
-};
+    return count;
+}
 
-// console.log(solution(2, 5));
-console.log(solution(-4, 2));
+// 1차 풀이 변형(while -> for문)
+function solution2(num, count=0) {
+    for(count; count<500; count++){
+        if (num % 2 == 0) {
+            num = num / 2;
+        } else if (num == 1) {
+            return count;
+        } else if (num % 2 == 1) {
+            num = num * 3 + 1;
+        }
+    }
+    return -1;
+}
+
+console.log(solution2(6));
+
+// 2차 풀이
+function solution3(num, count = 0) {
+    return (num == 1) ? (count >= 500 ? -1 : count) : solution3(num%2==0 ? num/2 : num *3+1, ++count);
+}
