@@ -1,0 +1,22 @@
+html, body {
+    height: 100%;
+}
+
+body {
+    position: relative;
+    background: linear-gradient(to right, #25c481, #25b7c4);
+}
+
+
+.content {
+    display: inline-block;
+    width: 300px;
+    height: 300px;
+    background-color: #fff;
+}
+
+
+
+.area_clock {
+    
+}
