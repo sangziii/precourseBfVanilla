@@ -14,7 +14,13 @@ window.onload = function(){
         var dayArr = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
         var dayName = dayArr[objDate.getDay()];
 
-        var currentTime = meridiem + "  " + hours + " : " + minutes + " : " + seconds;
+        function addZero(data){
+            data += '';
+            if(data.length < 2){ data = '0' + data; }
+            return data;
+        }
+
+        var currentTime = meridiem + "  " + addZero(hours) + " : " + addZero(minutes) + " : " + addZero(seconds);
 
         areaClock.innerText = currentTime;
     }
