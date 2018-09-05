@@ -1,0 +1,381 @@
+.blind {
+    overflow: hidden;
+    position: absolute;
+    clip: rect(0 0 0 0);
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+}
+
+em {
+    font-style: normal;
+}
+
+a {
+    color: #000;
+    text-decoration: none;
+}
+
+body, h1, h2, h3 ,h4, p {
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    padding-top: 40px;
+    background: linear-gradient(to right, #25c481, #25b7c4);
+}
+
+#calendar {
+    width: 490px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-family: 'Lato', sans-serif;
+
+}
+
+#calendar_header {
+    position: relative;
+    z-index: 10;
+    overflow: hidden;
+    height: 70px;
+    padding: 18px 0;
+    border-radius: 12px 12px 0px 0px;
+    /* background-color: #ff6860; */
+}
+
+.icon_left, .icon_right {
+    position: absolute;
+    z-index: 5;
+    top: 27px;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+}
+
+.icon_left:hover:before,
+.icon_right:hover:before {
+    border-color: #aaa;
+}
+
+.icon_left {
+    left: 10px;
+}
+
+.icon_left:before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 14px;
+    height: 14px;
+    transform: translate(-50%, -50%) rotate(45deg);
+    margin-top: -2px;
+    border-bottom: 2px solid #fff;
+    border-left: 2px solid #fff;
+    content: "";
+}
+
+.icon_right {
+    right: 10px;
+}
+
+.icon_right:before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 14px;
+    height: 14px;
+    transform: translate(-50%, -50%) rotate(45deg);
+    margin-top: -2px;
+    border-top: 2px solid #fff;
+    border-right: 2px solid #fff;
+    content: "";
+}
+
+#calendar_header h1 {
+    font-size: 1.5em;
+    color: #fff;
+}
+
+#calendar_weekdays div {
+    float: left;
+    width: 70px;
+    height: 70px;
+    background-color: #fff;
+    /* color: #ff6860; */
+    line-height: 70px
+}
+
+#calendar_weekdays:after, #calendar_content:after {
+    display: table;
+    table-layout: fixed;
+    clear: both;
+    content: '';
+}
+
+#calendar_content {
+    overflow: hidden;
+    border-radius: 0px 0px 12px 12px;
+    background-color: #fff;
+}
+
+#calendar_content div {
+    float: left;
+    position: relative;
+    width: 70px;
+    height: 70px;
+    background-color: #fff;
+    color: #787878;
+    line-height: 70px
+}
+
+#calendar_content div.is_today:before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 40px;
+    height: 40px;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    border: 2px solid red;
+    content: '';
+}
+
+#calendar_content div:hover {
+    background-color: beige;
+}
+
+#calendar_content div.blank {
+    background-color: #e8e8e8;
+}
+
+/* todo리스트 영역 */
+
+.todo_app {
+    position: fixed;
+    z-index: 100;
+    top: 100px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 800px;
+    height: 550px;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+        box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2), 0 25px 50px 0 rgba(0,0,0,0.1);
+}
+
+.todo_app .header {
+    text-align: center;
+}
+
+.todo_app .header .title {
+    line-height: 100px;
+    color: #000;
+    opacity: 0.6;
+    font-family: 'Righteous', cursive;
+    font-size: 70px;
+}
+
+.todo_app .content {
+    width: 550px;
+    margin: 15px auto 0;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2), 0 25px 50px 0 rgba(0,0,0,0.1);
+}
+
+.todo_app .area_input {
+    position: relative;
+}
+
+.todo_app .label_toggle_all {
+    position: absolute;
+    top: 11px;
+    left: -6px;
+    width: 60px;
+    height: 34px;
+    transform: rotate(90deg);
+}
+
+.todo_app .label_toggle_all:before{
+    padding: 10px 27px 10px 27px;
+    font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+    font-size: 22px;
+    color: #e6e6e6;
+    content: '>';
+}
+
+.todo_app .checkbox_toggle_all:checked + .label_toggle_all:before {
+    color: #737373;
+}
+
+.todo_app .content .input_todo {
+    box-sizing: border-box;
+    position: relative;
+    width: 100%;
+    margin: 0;
+    font-size: 30px;
+    outline: 0 solid transparent;
+    padding: 16px 16px 16px 60px;
+    border: none;
+    background: rgba(0,0,0,0.003);
+    box-shadow: inset 0 -2px 1px rgba(0,0,0,0.03);
+}
+
+.todo_app .list_todo .item {
+    position: relative;
+    border-bottom: 1px solid #ededed;
+}
+
+.todo_app .list_todo .item .inner{
+    display: block;
+    padding: 15px 15px 15px 60px;
+    font-size: 20px;
+    transition: color 0.4s;
+    word-break: break-all;
+}
+
+.todo_app .list_todo .checkbox_toggle_item {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    margin: 0 0 0 10px;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    outline: 1px solid transparent;
+    -webkit-appearance: none;
+}
+
+.todo_app .list_todo .checkbox_toggle_item:before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -8px 0 0 -4px;
+    width: 6px;
+    height: 12px;
+    border: solid transparent;
+    border-width: 0 1px 1px 0;
+    transform: rotate(45deg);
+    content: '';
+}
+
+.todo_app .list_todo .checkbox_toggle_item:checked:before {
+    border-color: steelblue;
+
+}
+
+.todo_app .list_todo .checkbox_toggle_item:checked + .inner {
+    text-decoration: line-through;``
+}
+
+.todo_app .button_delete {
+    position: absolute;
+    z-index: 5;
+    top: 0;
+    right: 0;
+    font-size: 30px;
+    color: #cc9a9a;
+    transition: color 0.2s ease-out;
+}
+
+.todo_app .button_delete:before {
+    padding: 0 15px;
+    line-height: 54px;
+    content: "×"
+}
+
+.todo_app .area_filter {
+    position: relative;
+    padding: 14px 0;
+    text-align: center;
+    font-size: 14px;
+}
+
+.todo_app .area_filter:after {
+    display: table;
+    table-layout: fixed;
+    clear: both;
+    content: '';
+}
+
+.todo_app .area_filter .status_todo {
+    float: left;
+    margin-left: 20px;
+    line-height: 27px;
+}
+
+.todo_app .area_filter .button_clear_completed {
+    float: right;
+}
+
+
+.todo_app .list_filter {
+    position: absolute;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.todo_app .list_filter:after {
+    display: table;
+    table-layout: fixed;
+    clear: both;
+    content: '';
+}
+
+.todo_app .list_filter .item {
+    float: left;
+    margin-left: 4px;
+}
+
+.todo_app .list_filter .item:first-child {
+    margin-left: 0;
+}
+
+.todo_app .list_filter .inner {
+    display: block;
+    padding: 3px 7px;
+    border: 1px solid transparent;
+    border-radius: 3px;
+}
+
+.todo_app .list_filter .item.is_active .inner{
+    border-color: #ddd;
+}
+
+.todo_app .button_clear_completed {
+    margin-right: 20px;
+    padding: 0;
+    border: 0;
+    line-height: 27px;
+    background: none;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.button_close_layer {
+    position: absolute;
+    z-index: 5;
+    top: 0;
+    right: 0;
+    font-size: 30px;
+    color: #333;
+    transition: color 0.2s ease-out;
+}
+
+
+.button_close_layer:after {
+    padding: 0 15px;
+    line-height: 54px;
+    content: "×"
+}

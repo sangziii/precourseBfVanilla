@@ -1,0 +1,87 @@
+<html ng-app="myApp" ng-controller="AppCtrl" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Calendar</title>
+        <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+        <link rel="stylesheet" href="calendar.css">
+    </head>
+    <body>
+        <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+
+        <div id="calendar">
+            <div id="calendar_header">
+                <div id="group_arrowIcon">
+                    <i class="icon_left"></i>
+                    <i class="icon_right"></i>
+                </div>
+                <h1></h1>
+            </div>
+            <div id="calendar_weekdays">
+                <div>Sun</div>
+                <div>Mon</div>
+                <div>Tue</div>
+                <div>Wed</div>
+                <div>Thu</div>
+                <div>Fri</div>
+                <div>Sat</div>
+            </div>
+            <div id="calendar_content"></div>
+        </div>
+
+        <div id="layerTodo" class="todo_app" style="display: none;">
+            <div class="header">
+                <h1 class="title">todos</h1>
+            </div>
+            <div class="content">
+                <div class="area_input">
+                    <input type="text" placeholder="What needs to be done?" class="input_todo" autofocus>
+                    <input id="chbxToggleAll" type="checkbox" class="blind checkbox_toggle_all">
+                    <label for="chbxToggleAll" class="label_toggle_all"><span class="blind">모든 리스트 토글</span></label>
+                </div>
+                <div class="area_todo">
+                    <ul class="list_todo">
+                        <li class="item">
+                            <input type="checkbox" class="checkbox_toggle_item">
+                            <label class="inner">업무 1</label>
+                            <a href="#" role="button" class="button_delete"></a>
+                        </li>
+                        <li class="item">
+                            <input type="checkbox" class="checkbox_toggle_item">
+                            <label class="inner">업무 2</label>
+                            <a href="#" role="button" class="button_delete"></a>
+                        </li>
+                        <li class="item">
+                            <input type="checkbox" class="checkbox_toggle_item">
+                            <label class="inner">업무 3</label>
+                            <a href="#" role="button" class="button_delete"></a>
+                        </li>
+                        <li class="item">
+                            <input type="checkbox" class="checkbox_toggle_item">
+                            <label class="inner">업무 4</label>
+                            <a href="#" role="button" class="button_delete"></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="area_filter">
+                    <span class="status_todo"><em>2</em> items left</span>
+                    <ul class="list_filter">
+                        <li class="item is_active">
+                            <a href="#" class="inner">All</a>
+                        </li>
+                        <li class="item">
+                            <a href="#" class="inner">Active</a>
+                        </li>
+                        <li class="item">
+                            <a href="#" class="inner">Completed</a>
+                        </li>
+                    </ul>
+                    <button type="button" class="button_clear_completed">Clear Completed</button>
+                </div>
+            </div>
+            <a href="#" role="button" class="button_close_layer"></a>
+        </div>
+
+        <script src="model.js"></script>
+        <script src="calendar.js"></script>
+    </body>
+</html>
