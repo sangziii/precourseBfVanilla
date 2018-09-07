@@ -101,9 +101,7 @@
 	// todo 동작
 	function todoApp(){
 		var template_item = '<input type="checkbox" class="checkbox_toggle_item"><label class="inner"></label><a href="#" role="button" class="button_delete"></a>';
-
 		var $todoDiv = document.querySelector('#layerTodo')
-		var $todayDiv = document.querySelector('.item');
 		var $numLeft = document.getElementById('numLeft');
 		var thisDateId;
 
@@ -150,10 +148,16 @@
 				var el_item = target.parentElement;
 				var el_item_id = el_item.dataset.todoId;
 
-				target.checked ? modelObj[thisDateId].setStatus(el_item_id) : modelObj[thisDateId].setStatus(el_item_id, false);
+				if(target.checked){
+					el_item.classList.add('is_completed');
+					modelObj[thisDateId].setStatus(el_item_id);
+				} else {
+					el_item.classList.remove('is_completed');
+					modelObj[thisDateId].setStatus(el_item_id, false);
+				}
 				countLeftTodo();
 
-			// clearCompleted
+			// 버튼 : clearCompleted 동작
 			} else if(target.className === "button_clear_completed"){
 				var el_todoList = document.querySelector('#listTodo');
 				var clearItemsId = modelObj[thisDateId].clearCompleted();
@@ -164,8 +168,47 @@
 						el_todoList.removeChild(finishItem);
 					}
 				}
-				console.log(modelObj[thisDateId].dataStore);
+			} 
+			// 버튼 : filter 동작
+			else if(target.className === "inner"){
+				var el_button = target.parentElement;
+				var el_button_list = el_button.parentElement; 
+				var el_buttons = el_button_list.children;
+				var els_length = el_buttons.length;
+				var listTodo = document.querySelector('#listTodo');
+				var listTodoItem = listTodo.querySelectorAll('.item');
+				var todo_length = listTodoItem.length;
+				
+				for (var i=0; i<els_length; i++){
+					el_buttons[i].classList.remove('is_active');
+				}
+				el_button.classList.add('is_active');
+
+				if (el_button.id === "btnViewAll"){
+					for (var i=0; i<todo_length; i++) {
+						listTodoItem[i].style.display = "block";
+					}
+				} else if (el_button.id === "btnViewActive"){
+					for (var i=0; i<todo_length; i++) {
+						if (listTodoItem[i].classList.contains('is_completed')){
+							listTodoItem[i].style.display = "none";
+						}
+					}
+
+				} else if (el_button.id === "btnViewComleted"){
+					for (var i=0; i<todo_length; i++) {
+						if (!listTodoItem[i].classList.contains('is_completed')) {
+							listTodoItem[i].style.display = "none";
+						}
+					}
+				}
+				
 			}
+		}
+
+		function filterItem(e){
+			var target = e.target;
+
 		}
 
 		$content.addEventListener('click', function(e){
@@ -190,7 +233,6 @@
 			countLeftTodo();
 		});
 
-		// todo 아이템 추가
 		$inputTodo.addEventListener('keypress', function(e){
 			if(this.value && e.which === 13){
 				var $listTodo = document.getElementById('listTodo');
@@ -240,14 +282,3 @@
 	initCalendar(year, month);
 	todoApp();
 })();
-
-// var names = new List();
-// names.append("상진");
-// names.append("정목");
-// names.append("재원");
-// names.append("누누");
-// console.log(names.toString());
-// names.remove("누누");
-// console.log(names.toString());
-// names.clear();
-// console.log(names.toString());

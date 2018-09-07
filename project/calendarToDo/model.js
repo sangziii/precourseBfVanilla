@@ -10,14 +10,10 @@ function initTodo(dateId){
         TodoItemObj.prototype.find = function(dataId){
             console.log(this.dataStore);
             for (var prop in this.dataStore) {
-                console.log("prop : ", prop);
-                console.log("dataId : ", dataId);
                 if(prop === dataId){
-                    console.log(dataId + " 프로퍼티는 존재합니다.");
                     return 1;
                 }
             }
-            console.log(dataId + " 프로퍼티는 존재하지 않습니다.");
             return -1;
         }
 
@@ -49,9 +45,7 @@ function initTodo(dateId){
         TodoItemObj.prototype.setStatus = function(dataId, isFinished=true){
             if(this.find(dataId) !== -1){
                 this.dataStore[dataId][1] = isFinished;
-
                 isFinished ? --this.numActive : ++this.numActive;
-
             } else {
                 return false;
             }

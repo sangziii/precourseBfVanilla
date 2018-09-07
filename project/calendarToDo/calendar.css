@@ -281,7 +281,7 @@ body {
 }
 
 .todo_app .list_todo .checkbox_toggle_item:checked + .inner {
-    text-decoration: line-through;``
+    text-decoration: line-through;
 }
 
 .todo_app .button_delete {
