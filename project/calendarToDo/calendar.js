@@ -192,6 +192,8 @@
 					for (var i=0; i<todo_length; i++) {
 						if (listTodoItem[i].classList.contains('is_completed')){
 							listTodoItem[i].style.display = "none";
+						} else {
+							listTodoItem[i].style.display = "block";
 						}
 					}
 
@@ -199,6 +201,8 @@
 					for (var i=0; i<todo_length; i++) {
 						if (!listTodoItem[i].classList.contains('is_completed')) {
 							listTodoItem[i].style.display = "none";
+						} else {
+							listTodoItem[i].style.display = "block";
 						}
 					}
 				}
