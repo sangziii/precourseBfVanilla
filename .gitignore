@@ -8,7 +8,7 @@ Thumbs.db
 .sass-cache
 .ftppass
 ## Directory-based project format
-.idea/
-.vscode/
+.idea
+.vscode
 /*.iml
 .gitignore
