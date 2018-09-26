@@ -44,7 +44,7 @@ Carray.prototype.swap = function(arr, idx1, idx2){
 Carray.prototype.bubbleSort = function () {
     len = this.dataStore.length;
 
-    for (k = 0; k <= len - 2; k++) {
+    for (k = 0; k <= len-2; k++) {
         for (var i = 0; i < len - k; i++) {
             if (this.dataStore[i] > this.dataStore[i + 1]) {
                 this.swap(this.dataStore, i, i + 1);
@@ -54,12 +54,37 @@ Carray.prototype.bubbleSort = function () {
     }
 }
 
+Carray.prototype.selectionSort = function(){
+    len = this.dataStore.length;
+    var min, temp;
+
+    for(k=0; k<len-1; k++){
+        min = k;
+        for (var i=k; i<len-1; i++) {
+            if (this.dataStore[min] > this.dataStore[i+1]){
+                min = i + 1;
+            }
+        }
+        if (this.dataStore[k] > this.dataStore[min]){
+            temp = this.dataStore[k];
+            this.dataStore[k] = this.dataStore[min];
+            this.dataStore[min] = temp;
+        }
+        console.log(this.toString());
+    }
+}
+
 var myNums = new Carray(10);
-console.log('Before BubbleSort');
+// console.log('Before BubbleSort');
+// myNums.setData();
+// console.log(myNums.toString());
+// console.log('After BubbleSort');
+// myNums.bubbleSort();
+// console.log(myNums.toString());
+
+console.log('Before SelectionSort');
 myNums.setData();
 console.log(myNums.toString());
-console.log('After BubbleSort');
-myNums.bubbleSort();
+console.log('After SelectionSort');
+myNums.selectionSort();
 console.log(myNums.toString());
-
-
