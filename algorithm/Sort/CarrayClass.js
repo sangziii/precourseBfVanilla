@@ -74,6 +74,21 @@ Carray.prototype.selectionSort = function(){
     }
 }
 
+Carray.prototype.insertionSort = function(){
+    len = this.dataStore.length;
+    var min, temp;
+
+    for(var outer=1; outer<len; outer++){
+        for(var inner=outer-1; inner>=0; inner--){
+            if(this.dataStore[inner] > this.dataStore[outer]){
+                temp = this.dataStore[inner-1];
+                this.dataStore[inner-1] = this.dataStore[outer];
+                this.dataStore[k] = temp;
+            }
+        }
+    }
+}
+
 var myNums = new Carray(10);
 // console.log('Before BubbleSort');
 // myNums.setData();
