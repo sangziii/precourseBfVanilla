@@ -10,7 +10,7 @@ function Carray(numElements){
 
 Carray.prototype.setData = function(){
     for(var i=0; i<this.numElements; i++){
-        this.dataStore[i] = Math.floor(Math.random() * (this.numElements + 1));
+        this.dataStore[i] = Math.floor(Math.random() * (this.numElements + 10));
     }
 }
 
@@ -76,14 +76,15 @@ Carray.prototype.selectionSort = function(){
 
 Carray.prototype.insertionSort = function(){
     len = this.dataStore.length;
-    var min, temp;
+    var temp;
 
     for(var outer=1; outer<len; outer++){
         for(var inner=outer-1; inner>=0; inner--){
             if(this.dataStore[inner] > this.dataStore[outer]){
-                temp = this.dataStore[inner-1];
-                this.dataStore[inner-1] = this.dataStore[outer];
-                this.dataStore[k] = temp;
+                temp = this.dataStore[outer];
+                this.dataStore[outer] = this.dataStore[inner];
+                this.dataStore[inner] = temp;
+                outer--;
             }
         }
     }
@@ -100,6 +101,6 @@ var myNums = new Carray(10);
 console.log('Before SelectionSort');
 myNums.setData();
 console.log(myNums.toString());
-console.log('After SelectionSort');
-myNums.selectionSort();
+console.log('After insertionSort');
+myNums.insertionSort();
 console.log(myNums.toString());
