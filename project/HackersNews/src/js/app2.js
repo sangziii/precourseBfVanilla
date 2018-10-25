@@ -77,6 +77,41 @@
         };
     }
 
+    function renderView(viewCmd, objData, idx){
+        var viewCommands = {
+            story: function(){
+                var template = TEMPLATE_STORIES;
+                var time = getTimeDiff(objData.time);
+
+                if(objData.url){
+                    var url_compressed = getCompressedUrl(objData.url);
+                    template = replaceAll(template, '{{url}}', objData.url);
+                    template = replaceAll(template, '{{urlComp}}', url_compressed);
+                } else {
+                    template = replaceAll(template, '{{url}}', 'https://news.ycombinator.com/item?id=' + objData.id);
+                    template = replaceAll(template, '({urlComp}})', '');
+                }
+                template = replaceAll(template, '{{rank}}', idx+1);
+                template = replaceAll(template, '{{by}}', objData.by);
+                template = replaceAll(template, '{{id}}', objData.id);
+                template = replaceAll(template, '{{descendants}}', objData.descendants);
+                template = replaceAll(template, '{{score}}', objData.score);
+                template = replaceAll(template, '{{time}}', time);
+                template = replaceAll(template, '{{title}}', objData.title);
+
+                
+                // return docfrag;
+                console.log(template);
+                return template
+                // view += template;
+                // $contentTable.children[0].innerHTML = view + BUTTON_MORE;
+                // var $moreLink = document.getElementsByClassName('morelink')[0];
+                // $moreLink.href = PAGE_NAME + "p=" + (nowPage + 1);
+            }
+        };
+        return viewCommands[viewCmd]();
+    }
+
     function eachReq(data){
         var count = 0;
         var idsTopStories = data;
@@ -86,48 +121,16 @@
 
         for(var i=0; i<NUM_ARTICLE; i++){
             (function(index){
+                var $contentTable = document.getElementsByClassName('itemlist')[0];
                 var id = idsTopStories[index];
                 var path_item = 'item/' + id + '.json';
 
                 req(path_item, function(obj){
                     objTopStories[index] = obj;
+                    $contentTable.children[0].innerHTML = renderView("story", obj);
+                    // $contentTable.children[0].appendChild = renderView("story", obj);
                     count++;
-                    
-                    if(count === NUM_ARTICLE){
-                        var $contentTable = document.getElementsByClassName('itemlist')[0];
-                        if (objTopStories.length === NUM_ARTICLE){
-                            console.dir(objTopStories);
-                            var data = objTopStories;
-                            var view = '';
-                            for (var i = 0, len = data.length; i < len; i++) {
-                                var template = TEMPLATE_STORIES;
-                                console.log(i + " : ", data[i].url);
-                                var time = getTimeDiff(data[i].time);
-
-                                if(data[i].url){
-                                    var url_compressed = getCompressedUrl(data[i].url); 
-                                    template = replaceAll(template, '{{url}}', data[i].url);
-                                    template = replaceAll(template, '{{urlComp}}', url_compressed);   
-                                } else {
-                                    template = replaceAll(template, '{{url}}', 'https://news.ycombinator.com/item?id='+data[i].id);
-                                    template = replaceAll(template, '({urlComp}})', '');
-                                }
-                                template = replaceAll(template, '{{rank}}', i+1);
-                                template = replaceAll(template, '{{by}}', data[i].by);
-                                template = replaceAll(template, '{{id}}', data[i].id);
-                                template = replaceAll(template, '{{descendants}}', data[i].descendants);
-                                template = replaceAll(template, '{{score}}', data[i].score);
-                                template = replaceAll(template, '{{time}}', time);
-                                template = replaceAll(template, '{{title}}', data[i].title);
-                                
-                                view += template;
-                            }
-                            $contentTable.children[0].innerHTML = view + BUTTON_MORE;
-                            var $moreLink = document.getElementsByClassName('morelink')[0];
-                            $moreLink.href = PAGE_NAME + "p=" + (nowPage+1);
-                        }
-                    }
-                });
+                }, index);
             })(i);
         }
     }
